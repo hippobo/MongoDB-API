@@ -3,7 +3,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 import pymongo
-from app.db_requests import DB_connection
+from db_requests import DB_connection
+print("HERE")
 
 app = FastAPI()
 
@@ -29,4 +30,7 @@ def return_random():
 
 
 
+print("here")
+import uvicorn
+uvicorn.run(app, host="0.0.0.0", port=8000)
 

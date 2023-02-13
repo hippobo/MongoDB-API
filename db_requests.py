@@ -1,4 +1,4 @@
-from app.database import DatabaseConnection
+from database import DatabaseConnection
 from bson.objectid import ObjectId
 
 class DB_connection:
@@ -15,9 +15,9 @@ class DB_connection:
         a['_id'] = str(a['_id'])
         return a 
     def get_random_document(self, collection_name):
-        a = self.db.get_collection(collection_name).aggregate([{"$sample": {"size": 1}}]).to_list(1)
-        a = str(a)
-        
+        a = self.db.get_collection(collection_name).aggregate([{"$sample": {"size": 1}}]).next()
+        a['_id'] = str(a['_id'])
+
         return a
     
 
